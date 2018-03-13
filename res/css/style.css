@@ -1,0 +1,127 @@
+/* 
+ *Autoren: 	David Dittmann & Johannes Neustädter
+ *Datum:	12.03.2018
+ *Version:	1.0
+ */
+*{
+	padding: 0px;
+	margin: 0px;
+}
+
+#header{
+    padding: 0px;
+
+}
+#header img {
+	width: 100%;
+	min-height:120px;
+}
+
+#login{
+	border-radius: 10px;
+	top: 10px;
+	right: 10px;
+	position: fixed;
+    background-color: #7DBD6C;
+    padding: 25px 0px 25px 0px;
+	min-width: 160px;
+	z-index: 100;
+	font-weight:bold;
+}
+#login h2 {
+	margin-top: 10px;
+	text-align: center;
+}
+#login input{
+	width:100%;
+}
+#login input[type=text]:focus {
+	outline: 2px solid orange;	
+}
+.log_submit {
+	border-radius: 10px;
+	background-color: orange;
+	width: 89% !important;
+	margin: 15px 5% 0 5%;
+}
+
+#nav{
+    background-color: #6B8E23;
+   	color: white;
+	text-transform: uppercase;
+}
+
+#nav ul {
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	list-style-type: none;
+	padding: 0;
+	
+}
+
+#nav li a {
+	float:left;
+	display: inline-block;
+	color: orange;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 1.3em;
+	font-weight: bold;
+	border-right: solid black;
+}
+#nav li a:hover{
+	color:black;
+	background-color:#ADFF2F;
+}
+#content{
+	padding-top: 20px;
+	padding-bottom: 20px;
+    background-color: #f2f3f4;
+}
+
+#content img {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+#content h1 {
+	margin-top: 10px;
+}
+
+#footer{
+	padding-top:20px;
+    background-color: #36612A;
+}
+#footer ul{
+	padding-left: 40px;
+	opacity: 0.7;
+}
+#footer h4{
+	text-indent: 5px;
+	margin: 10px;
+	color:white;
+	font-weight:bold;
+}
+#footer_nav{
+	padding-top: 10vh;
+	border-left: 2px solid white;
+	margin-bottom: 20px;
+	position: relative;
+	vertical-align: top;
+	padding-bottom: 10vh;
+}
+#footer a{
+	color: orange;
+	text-decoration: none;
+	font-weight:bold;
+}
+#footer a:hover{
+	color:black;
+	background-color:#ADFF2F;
+}
+.smalllist li
+{
+	float: left;
+	border-right: 2px solid white;
+}
