@@ -33,7 +33,14 @@
   <?php
   if(isset($_COOKIE["User"]))
   {
-      echo '<li><a id="warenkorb_nav" href="?section=warenkorb">Warenkorb</a></li>';
+	  echo '
+	  <li><a id="galerie_nav" href="?section=galerie">Galerie</a></li>
+	  <li><a id="warenkorb_nav" href="?section=warenkorb">Warenkorb</a></li>
+	  ';
+  }
+  else //zeigt wahlweise die galerie mit angemeldeten Benutzer und ohne
+  {
+	  echo  '<li><a id="galerie_nologin_nav" href="?section=galerie_nologin">Galerie</a></li>';
   }
   ?>
 </ul>

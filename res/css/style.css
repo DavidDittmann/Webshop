@@ -22,7 +22,7 @@
 	top: 10px;
 	right: 10px;
 	position: fixed;
-    background-color: #7DBD6C;
+    background-color: rgb(88, 128, 29);
     padding: 25px 0px 25px 0px;
 	min-width: 160px;
 	z-index: 100;
@@ -62,7 +62,7 @@
 #nav li a {
 	float:left;
 	display: inline-block;
-	color: orange;
+	color: rgb(202, 202, 202);
 	text-align: center;
 	padding: 14px 16px;
 	text-decoration: none;
@@ -72,12 +72,11 @@
 }
 #nav li a:hover{
 	color:black;
-	background-color:#ADFF2F;
+	background-color:rgb(88, 128, 29);
 }
 #content{
 	padding-top: 20px;
 	padding-bottom: 20px;
-    background-color: #f2f3f4;
 }
 
 #content img {
@@ -91,7 +90,7 @@
 
 #footer{
 	padding-top:20px;
-    background-color: #36612A;
+    background-color: rgb(52, 83, 44);
 }
 #footer ul{
 	padding-left: 40px;
@@ -118,10 +117,35 @@
 }
 #footer a:hover{
 	color:black;
-	background-color:#ADFF2F;
+	background-color:rgb(88, 128, 29);
 }
 .smalllist li
 {
 	float: left;
 	border-right: 2px solid white;
+}
+
+#gallery_nologin {
+	margin-top: 5%;
+	background-color: rgb(182, 182, 182);
+	border: 1px solid black;
+	padding: 15% 0px 15% 0px;
+}
+#dropbox {
+	margin-top: 5%;
+	background-color: rgb(182, 182, 182);
+	border: 3px dotted black;
+	padding: 15% 0px 15% 0px;
+}
+
+#gallery_upload {
+	float: right;
+	background-color: rgb(182, 182, 182);
+}
+
+
+
+#uploaded_gallery ol img{
+	margin-top: 10px;
+	margin-bottom: 10px;
 }

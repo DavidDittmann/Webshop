@@ -6,9 +6,10 @@
  */
  
     $cookiePath="/";
-    $cookieExpire=time()+3600;
+    $cookieExpire=time()+36000;
 
-
+    // da funktioniert irgendwas überhaupt nicht... ich wurde wieder nach einer Zeit rausgeworfen und konnte mich nicht mehr anmelden und bin irgendwo dead (cookie expire könnte es sein)
+    // da wir jetzt dann eh auf das fh anmelde dings umstellen müssen könnte es sein das wir das probem damit beheben. ansonst müssen wir da durchschauen da is irgendwo ein bug
     
     if(isset($_COOKIE["PHPSESSID"])&&!isset($_GET["logout"]))    //SESSION vorhanden
     {
@@ -31,7 +32,7 @@
 
     <form action="?login=1" method="POST">
 		<div class="<?php echo $configs->class_login_h2;?>">
-			<h2> Anmelden </h2>
+			<h2> Mit FH Account anmelden </h2>
 		</div>
 		<div class="<?php echo $configs->class_login_text;?>">
 			Benutzer:
@@ -62,7 +63,7 @@
             session_start();                                    //Session wird gestartet
             $_SESSION['User']=$user;
             setcookie("User",$user,$cookieExpire,$cookiePath); //Cookie 1 Stunde gültig
-            //setcookie("PHPSESSID",session_id(),$cookieExpire,$cookiePath);
+            setcookie("PHPSESSID",session_id(),$cookieExpire,$cookiePath);
             //echo '<script type="text/javascript">alert("Successful login");</script>';
         }     
         else                                                //Login failed
