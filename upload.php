@@ -34,8 +34,8 @@ if (isset($_FILES['userfile'])) {							// wurde Datei per POST-Methode upgeload
 
 <form method="post" enctype="multipart/form-data">
 <input type="hidden" name="MAX_FILE_SIZE" value="1024000">
-Das macht Manuel: <input name="userfile" type="file">
-<input type="submit" value="Upload">
+<input name="userfile" type="file">
+<input class="upload_button" type="submit" value="Upload">
 </form>
 
 <!-- drag&drop funkt noch nicht ... kein plan was wo wie man da machen muss ....upload_ajax.js is eingebunden und sollte onload irgendwas machen... tut es aber nicht -->

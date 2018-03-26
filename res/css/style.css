@@ -136,6 +136,7 @@
 	background-color: rgb(182, 182, 182);
 	border: 3px dotted black;
 	padding: 15% 0px 15% 0px;
+	margin-bottom: 10px;
 }
 
 #gallery_upload {
@@ -143,9 +144,14 @@
 	background-color: rgb(182, 182, 182);
 }
 
-
-
 #uploaded_gallery ol img{
 	margin-top: 10px;
 	margin-bottom: 10px;
+}
+
+.upload_button {
+	border-radius: 10px;
+	background-color: orange;
+	width: 20% !important;
+	margin: 15px 5% 0 5%;
 }
