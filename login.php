@@ -8,6 +8,8 @@
     $cookiePath="/";
     $cookieExpire=time()+3600;
 
+
+    
     if(isset($_COOKIE["PHPSESSID"])&&!isset($_GET["logout"]))    //SESSION vorhanden
     {
 		$user="anonym";
