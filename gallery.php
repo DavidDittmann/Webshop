@@ -1,6 +1,6 @@
 <div id="uploaded_gallery" class="<?php echo $configs->class_gallery;?>">
 <h1 class="text-center">Bilder</h1>
-<ol start="1">
+<tr>
 <?php
     // Ordnername 
     $ordner = "uploaded_files"; //auch komplette Pfade möglich ($ordner = "download/files";)
@@ -11,9 +11,10 @@
 
     // Schleife um Array "$alledateien" aus scandir Funktion auszugeben
     // Einzeldateien werden dabei in der Variabel $datei abgelegt
-
+    $counter=0;
     foreach ($allebilder as $bild) 
     {
+        
         // Zusammentragen der Dateiinfo
         $bildinfo = pathinfo($ordner."/".$bild); 
         //Folgende Variablen stehen nach pathinfo zur Verfügung
@@ -34,13 +35,19 @@
         if ($bild != "." && $bild != ".."  && $bild != "_notes" && $bildinfo['basename'] != "Thumbs.db") 
         {  
             ?>
-            <li class="<?php echo $configs->class_uploaded_gallery;?>">
+            <li class="<?php echo $configs->class_uploaded_gallery;?>"
+            <?php 
+            if ($counter%2 != 0) {
+                echo 'style="background-color: #EBEBEB; padding: 10px;"';
+            };
+            ?>>
                <a href="<?php echo $bildinfo['dirname']."/".$bildinfo['basename'];?>">
                <img src="<?php echo $bildinfo['dirname']."/".$bildinfo['basename'];?>" width="240" alt="Vorschau" /></a> 
            </li>
            <?php
+           $counter++;
         };
     };
 ?>
-</ol>
+</tr>
 </div>
