@@ -31,12 +31,10 @@
   <li><a id="home_nav" href="?section=home">Home</a></li>
   <li><a id="produkte_nav" href="?section=produkte">Produkte</a></li>
   <?php
-  if(isset($_COOKIE["User"]))
+  if(isset($_COOKIE["User"])&&$_COOKIE["User"]!="anonym")
   {
-	  echo '
-	  <li><a id="galerie_nav" href="?section=galerie">Galerie</a></li>
-	  <li><a id="warenkorb_nav" href="?section=warenkorb">Warenkorb</a></li>
-	  ';
+	  echo '<li><a id="galerie_nav" href="?section=galerie">Galerie</a></li>';
+          echo '<li><a id="warenkorb_nav" href="?section=warenkorb">Warenkorb</a></li>';
   }
   else //zeigt wahlweise die galerie mit angemeldeten Benutzer und ohne
   {

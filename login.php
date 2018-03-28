@@ -17,8 +17,7 @@
     
     if(isset($_COOKIE["PHPSESSID"])&&!isset($_GET["logout"]))    //SESSION vorhanden
     {
-		$user="anonym";
-		if(isset($_COOKIE["User"]))
+		if(isset($_COOKIE["User"])&&$_COOKIE["User"]!="anonym")
 		{
 			$VN=$_COOKIE["Vorname"];
                         $NN=$_COOKIE["Nachname"];
@@ -33,32 +32,38 @@
     }
     elseif((!isset($_GET['login']))&&(!isset($_COOKIE["PHPSESSID"])))   //Nicht eingelogt und keine SESSION
     {                                                               //-->ANONYMER USER
-?>
+        $user="anonym";
+        setcookie("User",$user,$cookieExpire,$cookiePath);
+    ?>
 
     <form action="?login=1" method="POST">
-		<div class="<?php echo $configs->class_login_h2;?>">
-			<h2> Mit FH Account anmelden </h2>
-		</div>
-		<div class="<?php echo $configs->class_login_text;?>">
-			Benutzer:
-		</div>
-		<div class="<?php echo $configs->class_login_input;?>">
-			<input class="log_input" type="text" name="user" required>
-		</div>
-		<div class="<?php echo $configs->class_login_text;?>">
-			Passwort:
-		</div>
-		<div class="<?php echo $configs->class_login_input;?>">
-			<input class="log_input" type="password" name="password" required><br>
-		</div>
-		<div class="<?php echo $configs->class_login_button;?>">
-			<input class="log_submit" type="submit" value="Login">
-		</div>
+        <div class="<?php echo $configs->class_login_h2;?>">
+                <h2> Mit FH Account anmelden </h2>
+        </div>
+        <div class="<?php echo $configs->class_login_text;?>">
+                Benutzer:
+        </div>
+        <div class="<?php echo $configs->class_login_input;?>">
+                <input class="log_input" type="text" name="user" required>
+        </div>
+        <div class="<?php echo $configs->class_login_text;?>">
+                Passwort:
+        </div>
+        <div class="<?php echo $configs->class_login_input;?>">
+                <input class="log_input" type="password" name="password" required><br>
+        </div>
+        <div class="<?php echo $configs->class_login_button;?>">
+                <input class="log_submit" type="submit" value="Login">
+        </div>
+        
+<?php   if(isset($_GET['section'])){$sec=$_GET['section'];}else{$sec="nosec";} 
+        echo '<input type="hidden" name="sec" value="'.$sec.'">';?>
     </form> 
 <?php
     }
     elseif(isset($_GET['login']))    //LOGIN und noch keine SESSION
     {
+        //echo '<script type="text/javascript">alert("Log");</script>';
         $user=$_POST["user"];
         $pass=$_POST["password"];
       
@@ -96,20 +101,29 @@
             setcookie("User",$user,$cookieExpire,$cookiePath); //Cookie 1 Stunde gültig
             setcookie("PHPSESSID",session_id(),$cookieExpire,$cookiePath);
             ldap_close($ds);
-            echo '<script type="text/javascript">window.location.href = "index.php"</script>';
+            //echo '<script type="text/javascript">alert("Login ok");</script>';
+            $site=$_POST['sec'];
+                if($site=="galerie_nologin")
+                    echo '<script type="text/javascript">window.location.href = "index.php?section=galerie"</script>';
+                elseif($site!="nosec")
+                    echo '<script type="text/javascript">window.location.href = "index.php?section='.$site.'"</script>';
+                else
+                    echo '<script type="text/javascript">window.location.href = "index.php"</script>';
         }
         else
         {
             echo '<script type="text/javascript">alert("Login failed");</script>';
+            echo '<script type="text/javascript">window.location.href = "index.php"</script>';
         }
                
     }
-    if(isset($_GET['logout'])&&isset($_COOKIE["User"]))   //Wenn Logout gedrückt und Session vorhanden 
+    if(isset($_GET['logout']))   //Wenn Logout gedrückt und Session vorhanden 
     {                                                       //-> SESSION Löschen
         session_unset();
         session_destroy();
+        //echo '<script type="text/javascript">alert("Loginout");</script>';
         
-        setcookie("User", "", time()-3600,$cookiePath);
+        setcookie("User", "anonym", time()+100000000,$cookiePath);
         unset($_COOKIE['User']);
         setcookie("PHPSESSID", "", time()-3600,$cookiePath);
         unset($_COOKIE['PHPSESSID']);
