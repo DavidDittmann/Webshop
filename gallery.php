@@ -14,7 +14,6 @@
     $counter=0;
     foreach ($allebilder as $bild) 
     {
-        
         // Zusammentragen der Dateiinfo
         $bildinfo = pathinfo($ordner."/".$bild); 
         //Folgende Variablen stehen nach pathinfo zur Verfügung

@@ -33,7 +33,7 @@ if (isset($_FILES['userfile'])) {							// wurde Datei per POST-Methode upgeload
 ?>
 
 <form method="post" enctype="multipart/form-data">
-<input type="hidden" name="MAX_FILE_SIZE" value="1024000">
+<input type="hidden" name="MAX_FILE_SIZE" value="512000">
 <input name="userfile" type="file">
 <input class="upload_button" type="submit" value="Upload">
 </form>

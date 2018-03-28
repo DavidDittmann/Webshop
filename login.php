@@ -6,7 +6,7 @@
  */
  
     $cookiePath="/";
-    $cookieExpire=time()+36000;
+    $cookieExpire=time()+360000;
 
     // da funktioniert irgendwas überhaupt nicht... ich wurde wieder nach einer Zeit rausgeworfen und konnte mich nicht mehr anmelden und bin irgendwo dead (cookie expire könnte es sein)
     // da wir jetzt dann eh auf das fh anmelde dings umstellen müssen könnte es sein das wir das probem damit beheben. ansonst müssen wir da durchschauen da is irgendwo ein bug
