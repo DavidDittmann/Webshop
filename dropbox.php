@@ -1,4 +1,4 @@
 <body onload="init();">
-		<div id="dropbox">drag files here</div>
-		<div id="result">&nbsp;</div>
+		<div id="dropbox" class="text-center">drag & drop</div>
+		
 </body>

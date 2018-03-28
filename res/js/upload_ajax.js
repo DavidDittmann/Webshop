@@ -23,14 +23,12 @@
 
 		var newRequest = new XMLHttpRequest();
 		newRequest.open("POST", "upload_ajax.php", true);
-		newRequest.addEventListener("load", transferComplete, false);
+		//newRequest.addEventListener("load", transferComplete, false);
 		newRequest.send(formData);
+		location.reload();
+		//window.location.href = "index.php";
     }
   }         
 
-  function transferComplete(evt) {
-	console.log(evt.target.responseText);
- 	var result = document.getElementById('result'); 
-	result.innerHTML = evt.target.responseText;	
- }
+  
 
