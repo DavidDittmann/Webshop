@@ -8,8 +8,22 @@ $subdir = "./uploaded_files/"; 		// Stelle, wo die Datei hinkopiert werden soll
                             // WICHTIG: das Verzeichnis muss die vollen Lese- und Schreibrechte haben
                             // -> in Winscp Verzeichnis selektieren, rechte Maustaste -> Eigenschaften, bei octal 0777 eintragen !!!!!!!
                             
-if (isset($_FILES['userfile'])) {							// wurde Datei per POST-Methode upgeloaded
+if (isset($_FILES['userfile'])) {	
     $fileupload=$_FILES['userfile'];
+    $finfo = new finfo(FILEINFO_MIME_TYPE);
+    
+    if ($_FILES['userfile']['size'] > 512000) {
+        echo '<script type="text/javascript">alert("File zu groß");</script>';
+        echo '<script type="text/javascript">window.location.href = "index.php"</script>';
+    }
+    else if (false === $ext = array_search($finfo->file($_FILES['userfile']['tmp_name']),array(
+            'jpg' => 'image/jpeg',
+            'png' => 'image/png',
+            'gif' => 'image/gif',
+        ),true)) {
+            echo '<script type="text/javascript">alert("Falscher Dateityp, pls no virus :(");</script>';
+            echo '<script type="text/javascript">window.location.href = "index.php"</script>';
+        }
                             // diverse Statusmeldungen ausschreiben
     //echo "name: ".$fileupload['name']." <br>";				// Originalname der hochgeladenen Datei
     //echo "type: ".$fileupload['type']." <br>";				// Mimetype der hochgeladenen Datei
@@ -20,7 +34,7 @@ if (isset($_FILES['userfile'])) {							// wurde Datei per POST-Methode upgeload
     //echo "<br>";
     
     // Pr�fungen, ob Dateiupload funktioniert hat
-    if ( !$fileupload['error'] 								// kein Fehler passiert
+    else if ( !$fileupload['error'] 								// kein Fehler passiert
         && $fileupload['size']>0							// Groeße > 0	
         && $fileupload['tmp_name']							// hochgeladene Datei hat einen temporaeren Namen
         && is_uploaded_file($fileupload['tmp_name']))       // nur dann true, wenn Datei gerade erst hochgeladen wurde
@@ -33,7 +47,7 @@ if (isset($_FILES['userfile'])) {							// wurde Datei per POST-Methode upgeload
 ?>
 
 <form method="post" enctype="multipart/form-data">
-<input type="hidden" name="MAX_FILE_SIZE" value="512000">
+<input type="hidden" name="MAX_FILE_SIZE" value="1024000">
 <input name="userfile" type="file">
 <input class="upload_button" type="submit" value="Upload">
 </form>

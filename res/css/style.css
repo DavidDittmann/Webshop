@@ -127,9 +127,9 @@
 
 #gallery_nologin {
 	margin-top: 5%;
-	background-color: rgb(182, 182, 182);
+	background-color: rgb(207, 207, 207);
 	border: 1px solid black;
-	padding: 15% 0px 15% 0px;
+	
 }
 #dropbox {
 	margin-top: 5%;
@@ -143,9 +143,7 @@
 	float: right;
 	background-color: rgb(182, 182, 182);
 }
-#uploaded_gallery {
-	border-right: 3px solid black;
-}
+
 #uploaded_gallery li{
 	list-style: none;
 	margin-top: 10px;
