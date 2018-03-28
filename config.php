@@ -10,6 +10,9 @@ return (object) array(
     'db_user'       => 'wt_user',
     'db_pass'       => 'password',
     
+    'ldapserver'      => 'ldap.technikum-wien.at',
+    'searchbase'    => 'dc=technikum-wien,dc=at',
+    
     'class_header'  => 'col-xs-12 col-sm-12 col-md-12 col-lg-12',
     'class_login'   => 'pull-right col-xs-3 col-sm-3 col-md-3 col-lg-3',
     'class_nav'  => 'col-xs-12 col-sm-12 col-md-12 col-lg-12',
