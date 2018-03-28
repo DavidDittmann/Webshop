@@ -1,3 +1,4 @@
+<script src="res/js/upload_ajax.js" type="text/javascript"></script>
 <div id="gallery_upload" class="<?php echo $configs->class_gallery_upload;?>">
 <h1 class="text-center">Upload</h1>
 
