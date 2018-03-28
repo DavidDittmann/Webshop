@@ -12,10 +12,8 @@
 
 
     $cookiePath="/";
-    $cookieExpire=time()+360000;
+    $cookieExpire=time()+36000;
 
-    // da funktioniert irgendwas überhaupt nicht... ich wurde wieder nach einer Zeit rausgeworfen und konnte mich nicht mehr anmelden und bin irgendwo dead (cookie expire könnte es sein)
-    // da wir jetzt dann eh auf das fh anmelde dings umstellen müssen könnte es sein das wir das probem damit beheben. ansonst müssen wir da durchschauen da is irgendwo ein bug
     
     if(isset($_COOKIE["PHPSESSID"])&&!isset($_GET["logout"]))    //SESSION vorhanden
     {
@@ -105,20 +103,6 @@
             echo '<script type="text/javascript">alert("Login failed");</script>';
         }
                
-           
-           
-           
-        /*if($user=="user"&&$pass=="1234") //LOGIN CHECK
-        {        
-            
-            
-            //echo '<script type="text/javascript">alert("Successful login");</script>';
-        }     
-        else                                                //Login failed
-        {
-            
-        }*/
-        //echo '<script type="text/javascript">window.location.href = "index.php"</script>';
     }
     if(isset($_GET['logout'])&&isset($_COOKIE["User"]))   //Wenn Logout gedrückt und Session vorhanden 
     {                                                       //-> SESSION Löschen

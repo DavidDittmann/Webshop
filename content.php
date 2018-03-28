@@ -6,7 +6,7 @@
  */
 
 
-if((!isset($_SESSION["menu"])&&!isset($_COOKIE["Menu"]))||(!isset($_SESSION["menu"])&&$_COOKIE["Menu"]=="home")||(isset($_SESSION["menu"])&&$_SESSION["menu"]=="home"))
+if((!isset($_SESSION["menu"])&&!isset($_COOKIE["Menu"]))||(!isset($_SESSION["menu"])&&isset($_COOKIE["Menu"])&&$_COOKIE["Menu"]=="home")||(isset($_SESSION["menu"])&&$_SESSION["menu"]=="home")||!isset($_COOKIE["User"]))
 {
     echo '<h1 class="text-center">Home</h1>
 	<div class="container">
@@ -18,7 +18,7 @@ if((!isset($_SESSION["menu"])&&!isset($_COOKIE["Menu"]))||(!isset($_SESSION["men
 	</div>
 	';
 }
-elseif((isset($_SESSION["menu"])&&$_SESSION["menu"]=="produkte")||($_COOKIE["Menu"]=="produkte"&&(!isset($_SESSION["menu"]))))
+elseif((isset($_SESSION["menu"])&&$_SESSION["menu"]=="produkte")||(isset($_COOKIE["Menu"])&&$_COOKIE["Menu"]=="produkte"&&(!isset($_SESSION["menu"]))))
 {
     echo '<h1 class="text-center">Produkte</h1>
 	<div class="container">
@@ -37,13 +37,13 @@ elseif((isset($_SESSION["menu"])&&$_SESSION["menu"]=="produkte")||($_COOKIE["Men
 	</div>
 	';
 }
-elseif((isset($_SESSION["menu"])&&$_SESSION["menu"]=="galerie")||($_COOKIE["Menu"]=="galerie"&&(!isset($_SESSION["menu"]))))
+elseif((isset($_SESSION["menu"])&&$_SESSION["menu"]=="galerie")||(isset($_COOKIE["Menu"])&&$_COOKIE["Menu"]=="galerie"&&(!isset($_SESSION["menu"])))&&isset($_COOKIE["User"]))
 {
 	include("gallery.php"); 
 
 	include("upload.php");
 }
-elseif((isset($_SESSION["menu"])&&$_SESSION["menu"]=="galerie_nologin")||($_COOKIE["Menu"]=="galerie_nologin"&&(!isset($_SESSION["menu"]))))
+elseif((isset($_SESSION["menu"])&&$_SESSION["menu"]=="galerie_nologin")||(isset($_COOKIE["Menu"])&&$_COOKIE["Menu"]=="galerie_nologin"&&(!isset($_SESSION["menu"]))))
 {
 	include("gallery.php");
 	
@@ -54,7 +54,7 @@ elseif((isset($_SESSION["menu"])&&$_SESSION["menu"]=="galerie_nologin")||($_COOK
 	</div>
 	';
 }
-elseif((isset($_SESSION["menu"])&&$_SESSION["menu"]=="warenkorb")||($_COOKIE["Menu"]=="warenkorb"&&(!isset($_SESSION["menu"]))))
+elseif((isset($_SESSION["menu"])&&$_SESSION["menu"]=="warenkorb")||(isset($_COOKIE["Menu"])&&$_COOKIE["Menu"]=="warenkorb"&&(!isset($_SESSION["menu"])))&&isset($_COOKIE["User"]))
 {
     echo '<h1 class="text-center">Warenkorb</h1>
 	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   
