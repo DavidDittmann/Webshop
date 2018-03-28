@@ -19,10 +19,10 @@
     var count = files.length; 
     for (i=0; i<count;i++) {   
 		var formData = new FormData();
-		formData.append("../../uploaded_files", files[i]);
+		formData.append("uploaded_files", files[i]);
 
 		var newRequest = new XMLHttpRequest();
-		newRequest.open("POST", "index.php", true);
+		newRequest.open("POST", "upload_ajax.php", true);
 		newRequest.addEventListener("load", transferComplete, false);
 		newRequest.send(formData);
     }

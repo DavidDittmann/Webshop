@@ -49,7 +49,7 @@ elseif((isset($_SESSION["menu"])&&$_SESSION["menu"]=="galerie_nologin")||(isset(
 	
 	echo '
 	<h1 class="text-center">Upload</h1>
-	<div id="gallery_nologin" class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+	<div id="gallery_nologin" class="$configs->class_gallery_noupload">
 	<h2 class="text-center">Nur angemeldete User können Bilder hinzufügen.</h2>
 	</div>
 	';

@@ -61,7 +61,6 @@
 
 #nav li a {
 	float:left;
-	display: inline-block;
 	color: rgb(202, 202, 202);
 	text-align: center;
 	padding: 14px 16px;

@@ -11,7 +11,7 @@ $subdir = "./uploaded_files/"; 		// Stelle, wo die Datei hinkopiert werden soll
 if (isset($_FILES['userfile'])) {	
     $fileupload=$_FILES['userfile'];
     $finfo = new finfo(FILEINFO_MIME_TYPE);
-    
+
     if ($_FILES['userfile']['size'] > 512000) {
         echo '<script type="text/javascript">alert("File zu groß");</script>';
         echo '<script type="text/javascript">window.location.href = "index.php"</script>';
@@ -47,14 +47,14 @@ if (isset($_FILES['userfile'])) {
 ?>
 
 <form method="post" enctype="multipart/form-data">
-<input type="hidden" name="MAX_FILE_SIZE" value="1024000">
-<input name="userfile" type="file">
-<input class="upload_button" type="submit" value="Upload">
+    <input type="hidden" name="MAX_FILE_SIZE" value="1024000">
+    <input name="userfile" type="file">
+    <input class="upload_button" type="submit" value="Upload">
 </form>
 
 <!-- drag&drop funkt noch nicht ... kein plan was wo wie man da machen muss ....upload_ajax.js is eingebunden und sollte onload irgendwas machen... tut es aber nicht -->
-<div id="dropbox" onload="init();" >
-    <h2 class="text-center"> Drag & Drop your files here </h2>
-</div>
+<?php
+    include("dropbox.php");
+?>
 </div>
 

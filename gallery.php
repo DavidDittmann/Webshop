@@ -41,7 +41,7 @@
             };
             ?>>
                <a href="<?php echo $bildinfo['dirname']."/".$bildinfo['basename'];?>">
-               <img src="<?php echo $bildinfo['dirname']."/".$bildinfo['basename'];?>" width="240" alt="Vorschau" /></a> 
+               <img src="<?php echo $bildinfo['dirname']."/".$bildinfo['basename'];?>" width="340" alt="Vorschau" /></a> 
            </li>
            <?php
            $counter++;
