@@ -13,7 +13,7 @@ if (isset($_FILES['userfile'])) {
     $fileupload=$_FILES['userfile'];
     $finfo = new finfo(FILEINFO_MIME_TYPE);
 
-    if ($_FILES['userfile']['size'] > 512000) {
+    if ($_FILES['userfile']['size'] > 2048000) {
         echo '<script type="text/javascript">alert("File zu groß");</script>';
         echo '<script type="text/javascript">window.location.href = "index.php"</script>';
     }

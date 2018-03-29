@@ -9,7 +9,7 @@ if (isset($_FILES)) {							// wurde Datei per POST-Methode upgeloaded
 
 	$finfo = new finfo(FILEINFO_MIME_TYPE);
 
-    if ($_FILES['file']['size'] > 512000) {
+    if ($_FILES['file']['size'] > 2048000) {
         echo '<script type="text/javascript">alert("File zu groß");</script>';
         echo '<script type="text/javascript">window.location.href = "index.php"</script>';
     }
