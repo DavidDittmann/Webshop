@@ -2,15 +2,12 @@
 <h1 class="text-center">Bilder</h1>
 <tr>
 <?php
-    // Ordnername 
-    $ordner = "uploaded_files"; //auch komplette Pfade möglich ($ordner = "download/files";)
+    $ordner = "uploaded_files";
 
     // Ordner auslesen und Array in Variable speichern
     $allebilder = scandir($ordner); // Sortierung A-Z
     // Sortierung Z-A mit scandir($ordner, 1)
 
-    // Schleife um Array "$alledateien" aus scandir Funktion auszugeben
-    // Einzeldateien werden dabei in der Variabel $datei abgelegt
     $counter=0;
     foreach ($allebilder as $bild) 
     {
