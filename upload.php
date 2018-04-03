@@ -13,18 +13,19 @@ if (isset($_FILES['userfile'])) {
     $fileupload=$_FILES['userfile'];
     $finfo = new finfo(FILEINFO_MIME_TYPE);
 
-    if ($_FILES['userfile']['size'] > 2048000) {
+    if ($_FILES['userfile']['size'] > 1024000) {
         echo '<script type="text/javascript">alert("File zu groß");</script>';
         echo '<script type="text/javascript">window.location.href = "index.php"</script>';
     }
-    else if (false === $ext = array_search($finfo->file($_FILES['userfile']['tmp_name']),array(
+    if (false === $ext = array_search($finfo->file($_FILES['userfile']['tmp_name']),array(
             'jpg' => 'image/jpeg',
             'png' => 'image/png',
             'gif' => 'image/gif',
-        ),true)) {
-            echo '<script type="text/javascript">alert("Falscher Dateityp, pls no virus :(");</script>';
-            echo '<script type="text/javascript">window.location.href = "index.php"</script>';
-        }
+        ),true)) 
+    {
+        echo '<script type="text/javascript">alert("Falscher Dateityp, pls no virus :(");</script>';
+        echo '<script type="text/javascript">window.location.href = "index.php"</script>';
+    }
                             // diverse Statusmeldungen ausschreiben
     //echo "name: ".$fileupload['name']." <br>";				// Originalname der hochgeladenen Datei
     //echo "type: ".$fileupload['type']." <br>";				// Mimetype der hochgeladenen Datei
@@ -53,7 +54,6 @@ if (isset($_FILES['userfile'])) {
     <input class="upload_button" type="submit" value="Upload">
 </form>
 
-<!-- drag&drop funkt noch nicht ... kein plan was wo wie man da machen muss ....upload_ajax.js is eingebunden und sollte onload irgendwas machen... tut es aber nicht -->
 <?php
     include("dropbox.php");
 ?>

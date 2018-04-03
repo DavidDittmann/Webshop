@@ -4,16 +4,9 @@
  *Datum:	12.03.2018
  *Version:	1.0
  */
-    
-    
-    
-
-
-
 
     $cookiePath="/";
     $cookieExpire=time()+36000;
-
     
     if(isset($_COOKIE["PHPSESSID"])&&!isset($_GET["logout"]))    //SESSION vorhanden
     {
