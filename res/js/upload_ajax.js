@@ -32,5 +32,4 @@ function drop(evt)
 	}
 }         
 
-  
 

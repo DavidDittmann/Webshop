@@ -140,6 +140,7 @@
 
 #gallery_upload {
 	float: right;
+	margin-bottom: 20px;
 	background-color: rgb(182, 182, 182);
 }
 
@@ -153,5 +154,16 @@
 	background-color: orange;
 	width: 20% !important;
 	margin: 15px 5% 0 5%;
+}
+
+#gallery_edit {
+	float: right;
+	padding-bottom: 10%;
+	background-color: rgb(182, 182, 182);
+}
+
+#edit_button {
+	background-color: rgb(140, 140, 233);
+	padding: 5px;
 }
 

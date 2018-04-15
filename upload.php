@@ -58,4 +58,8 @@ if (isset($_FILES['userfile'])) {
     include("dropbox.php");
 ?>
 </div>
+<?php
+    include("file_edit.php");
+?>
+
 
