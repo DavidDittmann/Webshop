@@ -3,7 +3,6 @@
 <tr>
 <?php
     $ordner = "uploaded_files";
-
     // Ordner auslesen und Array in Variable speichern
     $allebilder = scandir($ordner); // Sortierung A-Z
     // Sortierung Z-A mit scandir($ordner, 1)

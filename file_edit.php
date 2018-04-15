@@ -2,23 +2,65 @@
 <h1 class="text-center">Edit</h1>
 
 <form action="index.php" method="post">
-Name:   <input type="text" name="name"><br>
-Effect: <input type="radio" name="auswahl"  value="greyscale">Greyscale
+Name:   <input type="file" name="name"><br>        
+        
+        <br>
+Effect: <input type="radio" name="auswahl" value="greyscale">Greyscale
         <input type="radio" name="auswahl" value="mirror">Spiegeln
         <input type="radio" name="auswahl" value="other">anderes
-        <br>          
-        <input type="submit">
+        <br>
+        <input type="submit" value="Datei auswaehlen">
+</form>
+<!--
+<form action="index.php" method="post">
+Effect: <input type="radio" name="auswahl" value="greyscale">Greyscale
+        <input type="radio" name="auswahl" value="mirror">Spiegeln
+        <input type="radio" name="auswahl" value="other">anderes
+        <br>
+        <input type="submit" value="Effekt anwenden"> 
+        <br>
 </form>
 
+<form action="index.php" method="post">
+    <input type="submit"> 
+</form>
+-->
 <?php
-if(isset($_POST["name"]))
+if(isset($_POST["name"]) || isset($_SESSION['filenameedit']))
 {
+    /*
+    if (isset($_SESSION['filenameedit']) && isset($_POST["name"]))
+    {
+        unset($_SESSION['filenameedit']);
+        $image = $_POST["name"];
+    }
+    if (isset($_POST["name"]))
+    {
+        $image = $_POST["name"];
+    }
+    if (!isset($_SESSION['filenameedit']))
+    {
+        $_SESSION['filenameedit']= $image;
+    }
+    if (isset($_SESSION['filenameedit']) && !isset($_POST["name"]))
+    {
+        $image = $_SESSION['filenameedit'];
+    }
+    */
     $image = $_POST["name"];
-    $auswahl = $_POST["auswahl"];
+
+    if(isset($_POST["auswahl"]))
+    {
+        $auswahl = $_POST["auswahl"];
+    }
+    else
+    {
+        $auswahl = "empty";
+    }
 
     if ($auswahl == "greyscale")
     {
-        $imagefile = "uploaded_files/".$image;
+        $imagefile = 'uploaded_files/'.$image;
         $imagesize = getimagesize($imagefile);
         $imagewidth = $imagesize[0];
         $imageheight = $imagesize[1];
@@ -39,17 +81,20 @@ if(isset($_POST["name"]))
             default:
                 die('Unsupported imageformat');
         }
+        imagepng($image_edit, 'uploaded_files/'.$image);
         imagefilter($image_edit, IMG_FILTER_GRAYSCALE);
         imagepng($image_edit, 'uploaded_files/new_'.$image);
         imagedestroy($image_edit);
-    ?>
-        <img src="<?php echo "uploaded_files/new_".$image;?>" width="300" alt="Vorschau" />
-    <?php
-        echo '<script type="text/javascript">window.location.href = "index.php"</script>';
+        ?>
+            <img src="<?php echo "uploaded_files/new_".$image;?>" width="300" alt="Vorschau" />
+        <?php
     }
+    else
+    {
     ?>
-    <img src="<?php echo "uploaded_files/new_".$image;?>" width="300" alt="Vorschau" /> 
+        <img src="<?php echo "uploaded_files/".$image;?>" width="300" alt="Vorschau" /> 
     <?php
+    }
 }  
 ?>
 </div>
