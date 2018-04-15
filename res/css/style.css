@@ -167,3 +167,29 @@
 	padding: 5px;
 }
 
+
+.reg_text{
+	font-weight: bold;
+	font-size: 1.5em;
+	margin-bottom: 0.2em;
+	border-bottom: 1px dotted black;
+	padding:3px;
+}
+
+.reg_frame{
+	font-weight: bold;
+	font-size: 1.5em;
+	margin-bottom:0.2em;
+	border-bottom: 1px dotted black;
+}
+
+.reg_input{
+	width:30%;
+	margin-bottom:2px;
+}
+
+.reg_submit{
+	border-radius: 10px;
+	background-color: orange;
+	width: 30% !important;
+}

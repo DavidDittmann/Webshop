@@ -26,6 +26,10 @@ return (object) array(
     'class_gallery_upload'    => 'col-xs-6 col-sm-6 col-md-6 col-lg-6',
     'class_gallery_noupload'    => 'col-xs-6 col-sm-6 col-md-6 col-lg-6',
     'class_uploaded_gallery'  => 'col-xs-12 col-sm-12 col-md-12 col-lg-12',
+	
+	'class_reg_button'  => 'col-md-offset-6 col-lg-offset-6 col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center',
+	'class_reg_text'  => 'reg_text text-center col-xs-12 col-sm-12 col-md-6 col-lg-6',
+	'class_reg_input'  => 'reg_frame text-center col-xs-12 col-sm-12 col-md-6 col-lg-6',
     );
 
 ?>
