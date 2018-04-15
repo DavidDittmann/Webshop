@@ -37,12 +37,8 @@
                 echo 'style="background-color: #EBEBEB; padding: 10px;"';
             };
             ?>>
+                <h1 class="text-center"> <?php echo $bildinfo['basename'] ?> </h1>
                 <img src="<?php echo $bildinfo['dirname']."/".$bildinfo['basename'];?>" width="340" alt="Vorschau" /></a>
-                <form action='index.php' method='POST'>
-                    <input type="hidden" name="type" value="<?php echo  $bildinfo['type']; ?>">
-                    <input type="hidden" name="basename" value="<?php echo $bildinfo['basename']; ?>"> 
-                    <input id="edit_button"type="submit" value="edit <?php echo $bildinfo['filename'];?>" name="edit" />
-                </form>  
            </li>
            <?php
            $counter++;
