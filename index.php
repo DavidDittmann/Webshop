@@ -45,7 +45,14 @@ if (!isset($_SERVER["HTTPS"]) || $_SERVER["HTTPS"] != "on") {
         </div>
         <div id="content" class="<?php echo $configs->class_content;?>">
             <?php
-            include("content.php");
+            if((!isset($_GET['register']))&&(!isset($_GET['reg_db'])))
+            {
+                include("content.php");
+            }
+            else
+            {
+                include("register.php");
+            }
             ?>
         </div>
         <div id="footer" class="<?php echo $configs->class_footer;?>">
