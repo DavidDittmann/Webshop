@@ -7,7 +7,7 @@
     $allebilder = scandir($ordner); // Sortierung A-Z
     // Sortierung Z-A mit scandir($ordner, 1)
 
-    $counter=0;
+    $counter=1;
     foreach ($allebilder as $bild) 
     {
         // Zusammentragen der Dateiinfo
@@ -36,10 +36,11 @@
                 echo 'style="background-color: #EBEBEB; padding: 10px;"';
             };
             ?>>
-                <h1 class="text-center"> <?php echo $bildinfo['basename'] ?> </h1>
+                <h1 class="text-center"> <?php echo $counter.". ".$bildinfo['filename'] ?> </h1>
                 <img src="<?php echo $bildinfo['dirname']."/".$bildinfo['basename'];?>" width="340" alt="Vorschau" /></a>
            </li>
            <?php
+           $_SESSION[$counter] = $bildinfo['basename'];
            $counter++;
         };
     };
