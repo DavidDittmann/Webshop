@@ -2,7 +2,7 @@
 <h1 class="text-center">Edit</h1>
 
 <form action="index.php" method="post">
-        Bilder:
+        Bilder: <br>
         <?php
             $ordner = "uploaded_files";
             $allebilder = scandir($ordner);
@@ -42,7 +42,7 @@ if(isset($_SESSION['filenameedit']))
     $imagewidth = $imagesize[0];
     $imageheight = $imagesize[1];
     $imagetype = $imagesize[2];
-
+    $effect = 0;
     switch ($imagetype)
     {
         // Bedeutung von $imagetype:
@@ -63,27 +63,38 @@ if(isset($_SESSION['filenameedit']))
 
     if (isset($_POST['greyscale']))
     {
-        imagefilter($image_edit, IMG_FILTER_GRAYSCALE);        
+        if ($effect == 0)
+        {
+            imagepng($image_edit, 'uploaded_files/'.$image); //alte datei abspeichern
+        }
+        imagefilter($image_edit, IMG_FILTER_GRAYSCALE); 
+        unset($_POST['greyscale']);
+        $effect = 1;       
     }
-    else if (isset($_POST['mirror']))
-    {        
-        imageflip($image_edit, IMG_FLIP_HORIZONTAL);        
+    if (isset($_POST['mirror']))
+    {   
+        if ($effect == 0)
+        {
+            imagepng($image_edit, 'uploaded_files/'.$image); //alte datei abspeichern
+        }
+        imageflip($image_edit, IMG_FLIP_HORIZONTAL);
+        unset($_POST['mirror']);   
+        $effect = 1;     
+    }
+
+    if ($effect != 0)
+    {
+        imagepng($image_edit, 'uploaded_files/edit_'.$image);
+        ?>
+        <img src="<?php echo "uploaded_files/edit_".$image;?>" width="300" alt="Vorschau" />
+        <?php
+        imagedestroy($image_edit);
     }
     else
     {
         ?>
             <img src="<?php echo "uploaded_files/".$image;?>" width="300" alt="Vorschau" /> 
         <?php
-    }
-
-    if (isset($_POST['greyscale']) || (isset($_POST['mirror'])))
-    {
-        imagepng($image_edit, 'uploaded_files/'.$image); //alte datei
-        imagepng($image_edit, 'uploaded_files/edit_'.$image);
-        ?>
-        <img src="<?php echo "uploaded_files/edit_".$image;?>" width="300" alt="Vorschau" />
-        <?php
-        imagedestroy($image_edit);
     }
 }  
 ?>
