@@ -12,6 +12,7 @@
     {
 		if(isset($_COOKIE["User"])&&$_COOKIE["User"]!="anonym")
 		{
+                    //var_dump($_COOKIE);
 			$VN=$_COOKIE["Vorname"];
                         $NN=$_COOKIE["Nachname"];
 		}
@@ -74,15 +75,17 @@
         if(mysqli_connect_errno()==0)   //DB-Connection OK
         {
             echo '<script>console-log("DB CONNECTION -> OK");</script>';
-            $qr='select `username`, `pwd`, `vorname`, `nachname` from user where `username`="'.$user.'" and `pwd`="'.$pwmd5.'"';
+            $qr='select username, pwd, vorname, nachname from user where `username`="'.$user.'" and `pwd`="'.$pwmd5.'"';
             $result=$dbobject->query($qr);
 
             if($result && $result->num_rows)    //EIntrag gefunden in DB
             {   //Eintrag in DB gefunden
                 //echo "result was true - success";
+                $row = mysqli_fetch_assoc($result);
                 echo '<script>console-log("DB SELECT -> OK");</script>';
-                $VN=$result->vorname;
-                $NN=$result->nachname;
+                $VN=$row["vorname"];
+                $NN=$row["nachname"];
+                //echo '<script type="text/javascript">alert("Namen:'.$result->vorname.' '.$result->nachname.' '.$VN.' '.$NN.'");</script>';
                 session_start();                                    //Session wird gestartet
                 $_SESSION['User']=$user;
                 setcookie("Vorname",$VN,$cookieExpire,$cookiePath);
