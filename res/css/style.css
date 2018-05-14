@@ -194,13 +194,25 @@
 	width: 30% !important;
 }
 
-#RSS, #feedy{
+
+
+
+
+
+
+
+
+
+
+
+
+#RSS, #feedy, #VitalData{
 	border: 1px solid black;
 	margin: 2.5em 1em 0.5em 1em;
 	padding: 0.5em 1em 0.5em 1em;
 }
 
-#RSS h2, #feedy h2{
+#RSS h2, #feedy h2, #VitalData h2{
 	font-weight:bold;
 	text-align:center;
 }
@@ -262,4 +274,39 @@
 #RSS img{
 	display: none;
 }
+
+
+
+
+
+
+
+
+
+
+#VitalData table{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2em;
+	width:99%;
+	border: 1px solid black;
+}
+
+#VitalData th {
+    background-color: #4CAF50;
+    color: white;
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+#VitalData th, #VitalData td {
+    text-align: left;
+    padding: 8px;
+}
+
+#VitalData tr:nth-child(even)
+{
+	background-color: #9ec0f7
+}
+
 
