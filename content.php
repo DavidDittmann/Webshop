@@ -89,6 +89,43 @@ if((!isset($_SESSION["menu"])&&!isset($_COOKIE["Menu"]))||(!isset($_SESSION["men
 		echo '<div id="RSS">';
 		echo '</div>';
 	}
+	
+	
+	//-----------------VITAL ZEUGS---------------------
+	
+	
+	$data = file_get_contents('http://localhost:8080/rest/items/vital_data/history');
+	$obj=json_decode($data);
+	echo '<div id="VitalData">';
+		echo "<h2>Vitalparameter</h2>";
+		echo "<table>";
+		echo "<tr><th>ID</th><th>Name</th><th>Uhrzeit</th><th>Blutdruck Diastolisch</th><th>Blutdruck Systolisch</th><th>Puls</th></tr>";
+		foreach($obj as $entry)
+		{
+			echo "<tr><td>".$entry->id."</td>";
+			echo "<td>".$entry->name."<td>";
+			echo "<td>".$entry->timestamp."<td>";
+			echo "<td>".$entry->diastolic_pressure." ".$entry->pressure_unit."</td>";
+			echo "<td>".$entry->systolic_pressure." ".$entry->pressure_unit."</td>";
+			echo "<td>".$entry->heart_rate." ".$entry->heart_rate_unit."</td></tr>";
+		}
+		echo "</table>";
+	echo "</div>";
+	
+	
+	//print_r($obj);
+	
+
+	/*print $obj->{"id"}." ";
+	print $obj->{"name"}." ";
+	print $obj->{"timestamp"}." ";
+	print $obj->{"diastolic_pressure"}." ";
+	print $obj->{"systolic_pressure"}." ";
+	print $obj->{"heart_rate"}." ";
+	print $obj->{"pressure_unit"}." ";
+	print $obj->{"heart_rate_unit"}." ";*/
+	echo "<br>";
+	
 }
 elseif((isset($_SESSION["menu"])&&$_SESSION["menu"]=="produkte")||(isset($_COOKIE["Menu"])&&$_COOKIE["Menu"]=="produkte"&&(!isset($_SESSION["menu"]))))
 {
