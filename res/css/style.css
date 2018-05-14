@@ -194,14 +194,15 @@
 	width: 30% !important;
 }
 
-#RSS{
+#RSS, #feedy{
 	border: 1px solid black;
 	margin: 2.5em 1em 0.5em 1em;
 	padding: 0.5em 1em 0.5em 1em;
 }
 
-#RSS h2{
+#RSS h2, #feedy h2{
 	font-weight:bold;
+	text-align:center;
 }
 
 .greybox, .bluebox{
@@ -224,3 +225,41 @@
 .bluebox{
 	background-color: #edbb65;
 }
+
+#formbox{
+	margin: 1em 15em 1em 15em;
+}
+#inputtitle{
+	width: 15%;
+	display:inline-block;
+	font-size:1.6em;
+	font-weight:bold;
+	text-align:center;
+	border: 2px solid white;
+	padding: 1px;
+}
+#inputbox{
+	width: 60%;
+	display:inline-block;
+}
+#inputbox input{
+	width:100%;
+	height:2em;
+}
+#buttonbox{
+	width: 24%;
+	display:inline-block;
+}
+#buttonbox input{
+	width:70%;
+	margin: 0 14.5% 0 14.5%;
+	font-size:1.6em;
+}
+.feed-entry{
+	overflow:auto;
+}
+
+#RSS img{
+	display: none;
+}
+

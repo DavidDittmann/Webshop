@@ -4,8 +4,27 @@
  *Datum:	12.03.2018
  *Version:	1.0
  */
-
-
+ ?>
+<script>
+	function showRSS(str) {
+		if (str.length==0) { 
+			document.getElementById("RSS").innerHTML="";
+			return;
+		}
+		xmlhttp=new XMLHttpRequest();
+		
+		xmlhttp.onreadystatechange=function()
+		{
+			if (this.readyState==4 && this.status==200)
+			{
+				document.getElementById("RSS").innerHTML=this.responseText;
+			}
+		}
+		xmlhttp.open("GET","getrss.php?q="+str,true);
+		xmlhttp.send();
+	}
+</script>
+<?php
 if((!isset($_SESSION["menu"])&&!isset($_COOKIE["Menu"]))||(!isset($_SESSION["menu"])&&isset($_COOKIE["Menu"])&&$_COOKIE["Menu"]=="home")||(isset($_SESSION["menu"])&&$_SESSION["menu"]=="home")||!isset($_COOKIE["User"]))
 {
     echo '<h1 class="text-center">Home</h1>
@@ -18,29 +37,58 @@ if((!isset($_SESSION["menu"])&&!isset($_COOKIE["Menu"]))||(!isset($_SESSION["men
 	</div>
 	';
 	
-	$i=0;
-	echo '<div id="RSS">';
-	echo '<h2>NEWSFEED - TU WIEN</h2>';
-		$myFeed = simplexml_load_file("http://www.tuwien.ac.at/index.php?id=157&type=100");
-		
-		foreach($myFeed->channel->item as $eintrag){
-			$i++;
-			if($i%2==0)
-			{
-				echo '<div class="bluebox">';
+	?>
+	<div id="feedy">
+		<div id="titlebox">
+			<h2>Load your own Newsfeed</h2>
+		</div>
+		<div id="formbox">
+			<form>
+				<div id="inputtitle">
+					URL:
+				</div>
+				<div id="inputbox">
+					<input type="url" id="urlin">
+				</div>
+				<div id="buttonbox">
+					<input type="button" value="Laden" onclick="showRSS(urlin.value)">
+				</div>
+			</form>
+		</div>
+	</div>
+	<?php
+	if(!isset($_GET["q"]))
+	{
+		$i=0;
+		echo '<div id="RSS">';
+		echo '<h2>NEWSFEED - TU WIEN</h2>';
+			$myFeed = simplexml_load_file("http://www.tuwien.ac.at/index.php?id=157&type=100");
+			
+			foreach($myFeed->channel->item as $eintrag){
+				$i++;
+				if($i%2==0)
+				{
+					echo '<div class="bluebox">';
+				}
+				else
+				{
+					echo '<div class="greybox">';
+				}
+				echo '<a href="'.$eintrag->link.'">'.$eintrag->title.'</a>';
+				echo "<br/>";
+				echo $eintrag->description;
+				echo "<br/>";
+				echo "</div>";
 			}
-			else
-			{
-				echo '<div class="greybox">';
-			}
-			echo '<a href="'.$eintrag->link.'">'.$eintrag->title.'</a>';
-			echo "<br/>";
-			echo $eintrag->description;
-			echo "<br/>";
-			echo "</div>";
-		}
-		
-	echo '</div>';
+			
+		echo '</div>';
+	}
+	else
+	{
+		$i=0;
+		echo '<div id="RSS">';
+		echo '</div>';
+	}
 }
 elseif((isset($_SESSION["menu"])&&$_SESSION["menu"]=="produkte")||(isset($_COOKIE["Menu"])&&$_COOKIE["Menu"]=="produkte"&&(!isset($_SESSION["menu"]))))
 {
