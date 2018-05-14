@@ -17,6 +17,30 @@ if((!isset($_SESSION["menu"])&&!isset($_COOKIE["Menu"]))||(!isset($_SESSION["men
 	<br>
 	</div>
 	';
+	
+	$i=0;
+	echo '<div id="RSS">';
+	echo '<h2>NEWSFEED - TU WIEN</h2>';
+		$myFeed = simplexml_load_file("http://www.tuwien.ac.at/index.php?id=157&type=100");
+		
+		foreach($myFeed->channel->item as $eintrag){
+			$i++;
+			if($i%2==0)
+			{
+				echo '<div class="bluebox">';
+			}
+			else
+			{
+				echo '<div class="greybox">';
+			}
+			echo '<a href="'.$eintrag->link.'">'.$eintrag->title.'</a>';
+			echo "<br/>";
+			echo $eintrag->description;
+			echo "<br/>";
+			echo "</div>";
+		}
+		
+	echo '</div>';
 }
 elseif((isset($_SESSION["menu"])&&$_SESSION["menu"]=="produkte")||(isset($_COOKIE["Menu"])&&$_COOKIE["Menu"]=="produkte"&&(!isset($_SESSION["menu"]))))
 {
@@ -63,4 +87,6 @@ elseif((isset($_SESSION["menu"])&&$_SESSION["menu"]=="warenkorb")||(isset($_COOK
 	';
 }
 ?>
+
+
 
