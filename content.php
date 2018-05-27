@@ -27,15 +27,7 @@
 <?php
 if((!isset($_SESSION["menu"])&&!isset($_COOKIE["Menu"]))||(!isset($_SESSION["menu"])&&isset($_COOKIE["Menu"])&&$_COOKIE["Menu"]=="home")||(isset($_SESSION["menu"])&&$_SESSION["menu"]=="home")||!isset($_COOKIE["User"]))
 {
-    echo '<h1 class="text-center">Home</h1>
-	<div class="container">
-	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-	Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.   
-	<br>
-	Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.   
-	<br>
-	</div>
-	';
+    echo '<h1 class="text-center">Home</h1>';
 	
 	?>
 	<div id="feedy">
@@ -113,24 +105,71 @@ if((!isset($_SESSION["menu"])&&!isset($_COOKIE["Menu"]))||(!isset($_SESSION["men
 	echo "</div>";
 	
 }
+
 elseif((isset($_SESSION["menu"])&&$_SESSION["menu"]=="produkte")||(isset($_COOKIE["Menu"])&&$_COOKIE["Menu"]=="produkte"&&(!isset($_SESSION["menu"]))))
 {
-    echo '<h1 class="text-center">Produkte</h1>
-	<div class="container">
+	echo '<h1 class="text-center">Rechner</h1>';
 	
-	Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.   
-	<br>
-	Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.   
-	<br>
-	At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At accusam aliquyam diam diam dolore dolores duo eirmod eos erat, et nonumy sed tempor et et invidunt justo labore Stet clita ea et gubergren, kasd magna no rebum. sanctus sea sed takimata ut vero voluptua. est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.   
-	<br>
-	Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus.   
-	<br>
-	Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.   
-	<br>
-	Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-	</div>
-	';
+		//-----------------Rechner---------------------
+		?>
+		<div class="<?php echo $configs->class_rechner_off;?>"></div>
+		<div id="rechner" class="<?php echo $configs->class_rechner_off;?> text-center">
+			
+		
+			<form method="post">
+				<p>1 Zahl: <input name="z1" type="number"></p>
+				<p>2 Zahl: <input name="z2" type="number"></p>
+		
+				<input class="rech_button" type="submit" name="add" value="Add">
+				<input class="rech_button" type="submit" name="subtract" value="Subtract">
+				<input class="rech_button" type="submit" name="multiply" value="Multiply">
+				<input class="rech_button" type="submit" name="divide" value="Divide">
+			</form>
+	
+		<div id="rech_erg">
+		<h2>Ergebnis:</h2>
+		
+		<?php
+		//if (isset($_POST["add"]) || isset($_POST["subtract"]) || isset($_POST["multiply"]) || isset($_POST["divide"]))
+			
+		//WSDL-Adresse
+		$calculateServiceWSDL = "http://www.dneonline.com/calculator.asmx?wsdl";
+		//Initialisierung SOAP-Client
+		$calculateServiceClient = new SoapClient($calculateServiceWSDL);
+	
+		$params = array();
+	
+	
+		if (isset($_POST["add"]))
+		{
+			$params["intA"] = $_POST["z1"];
+			$params["intB"] = $_POST["z2"];
+			echo $calculateServiceClient->Add($params)->AddResult;
+		} 
+		else if (isset($_POST["subtract"]))
+		{
+			$params["intA"] = $_POST["z1"];
+			$params["intB"] = $_POST["z2"];
+			echo $calculateServiceClient->Subtract($params)->SubtractResult;
+		} 
+		else if (isset($_POST["multiply"]))
+		{
+			$params["intA"] = $_POST["z1"];
+			$params["intB"] = $_POST["z2"];
+			echo $calculateServiceClient->Multiply($params)->MultiplyResult;
+		} 
+		else if (isset($_POST["divide"]))
+		{
+			$params["intA"] = $_POST["z1"];
+			$params["intB"] = $_POST["z2"];
+			echo $calculateServiceClient->Divide($params)->DivideResult;
+		}
+
+		?>
+		</div>
+		</div>
+		<?php
+		
 }
 elseif((isset($_SESSION["menu"])&&$_SESSION["menu"]=="galerie")||(isset($_COOKIE["Menu"])&&$_COOKIE["Menu"]=="galerie"&&(!isset($_SESSION["menu"])))&&isset($_COOKIE["User"]))
 {

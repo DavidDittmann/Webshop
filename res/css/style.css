@@ -310,3 +310,24 @@
 }
 
 
+
+#rechner{
+    border: 3px solid green;
+	padding: 10px;
+	font-size: 150%;
+	border-radius: 5px;
+}
+
+.rech_button {
+	margin-top: 10px;
+	padding: 10px;
+	background-color: rgb(228, 161, 60);
+	border-radius: 5px;
+}
+
+#rech_erg {
+	padding-bottom: 20px;
+	font-size: 150%;
+}
+
+

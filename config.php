@@ -29,7 +29,9 @@ return (object) array(
 	
 	'class_reg_button'  => 'col-md-offset-6 col-lg-offset-6 col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center',
 	'class_reg_text'  => 'reg_text text-center col-xs-12 col-sm-12 col-md-6 col-lg-6',
-	'class_reg_input'  => 'reg_frame text-center col-xs-12 col-sm-12 col-md-6 col-lg-6',
+    'class_reg_input'  => 'reg_frame text-center col-xs-12 col-sm-12 col-md-6 col-lg-6',
+    
+    'class_rechner_off'    => 'col-xs-4 col-sm-4 col-md-4 col-lg-4',
     );
 
 ?>
